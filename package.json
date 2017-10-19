@@ -1,0 +1,23 @@
+{
+  "name": "webpackproject",
+  "version": "1.0.0",
+  "description": "webpack打包构建项目完成案例",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuxiaochun/webpackProject.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "fuxiaochun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fuxiaochun/webpackProject/issues"
+  },
+  "homepage": "https://github.com/fuxiaochun/webpackProject#readme"
+}
