@@ -3,12 +3,11 @@ const fs = require('fs');
 const path = require('path');
 const paths = require('./path.js');
 const entrys = require('./entrys.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports={
+module.exports = {
 	entry:entrys,
 	output: {
-		path: path.dist,
+		path: paths.dist,
 		filename: 'js/[name].js'
 	},
 	module:{
@@ -18,7 +17,7 @@ module.exports={
 				use: ['style-loader','css-loader','sass-loader']
 			},
 			{
-				test: /.js$/,
+				test: /.jsx?$/,
 				use: 'babel-loader'
 			}
 		],

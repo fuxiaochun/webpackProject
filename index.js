@@ -2,10 +2,11 @@
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 const baseConfig = require('./webpack/webpack.config.js');
-
 const compiler = webpack(baseConfig);
+
 const server = new webpackDevServer(compiler, {
 	//
+	publicPath:'http://localhost:8080/dist/',
 	hot: false,
 	compress: true
 });
