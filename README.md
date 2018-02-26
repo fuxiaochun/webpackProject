@@ -5,6 +5,12 @@
 - css预处理使用sass；
 - html使用ejs；
 
+整个项目需要完成的功能：
+1.webpack-dev-server本地服务配置
+2.webpack编译配置
+3.ejs编译
+4.flame编译
+
 1，初始化项目配置。
     `npm init`;
     一路填写相关配置描述，完成package.json文件的生成。
