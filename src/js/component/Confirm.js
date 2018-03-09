@@ -4,14 +4,17 @@
  * @Email:  fuzhengchun@gomeplus.com
  */
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Dialog from 'component/Dialog';
+
+let noop = function(){};
 
 class Confirm extends Component{
 
 	constructor(props){
 		super(props);
-		this.okValue = this.props.okValue || '确定';
-		this.cancelValue = this.props.cancelValue || '取消';
+		this.okValue = this.props.okValue;
+		this.cancelValue = this.props.cancelValue;
 		this.state = {
 			visible: this.props.visible
 		}
@@ -27,7 +30,7 @@ class Confirm extends Component{
 		this.setState({
 			visible:false
 		}, ()=>{
-			this.props.onOk && this.props.onOk();
+			this.props.onOk();
 		})
 	}
 
@@ -35,12 +38,15 @@ class Confirm extends Component{
 		this.setState({
 			visible: false
 		}, ()=>{
-			this.props.onCancel && this.props.onCancel();
+			this.props.onCancel();
 		});
 	}
 
+	onClose = ()=>{
+		this.props.onClose();
+	}
+
 	render(){
-		let msg = typeof this.props.msg === 'undefined' ? null : <div className="main">{this.props.msg}</div>;
 
 		let defaultFooter = [
 			<button key="1" className="btn sure-btn" onClick={this.onOk}>{this.okValue}</button>,
@@ -53,14 +59,32 @@ class Confirm extends Component{
 
 
 		return (
-			<Dialog visible={this.state.visible}>
-				<div className="content">{content}{tips}</div>
-				<div className="footer">
+			<Dialog style={this.props.style} visible={this.state.visible} onClose={this.onClose}>
+				<div className="dialog-content">{content}{tips}</div>
+				<div className="dialog-footer">
 					{footer}
 				</div>
 			</Dialog>
 		)
 	}
 }
+
+Confirm.propTypes = {
+	visible: PropTypes.bool.isRequired,
+	content: PropTypes.string.isRequired,
+	footer: PropTypes.node,
+}
+
+Confirm.defaultProps = {
+	style: null,
+	visible: false,
+	tips: '',
+	okValue: '确定',
+	cancelValue: '取消',
+	onOk: noop,
+	onCancel: noop,
+	onClose: noop
+}
+
 
 export default Confirm;
